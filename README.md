@@ -1,7 +1,7 @@
 # work-day-scheduler
 
 ## Purpose
-A website that 
+A website that allows you to add important events to an online daily planner for efficient time management. It is color coded for past, present, and future hours. 
 
 ## Built With 
 HTML, CSS (bootstrap), and JavaScript (jquery & moment)
