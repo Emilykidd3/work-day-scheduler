@@ -25,16 +25,25 @@ $(".description").each(function(){
 })
 
 var loadSchedule = function() {
-    schedule = JSON.parse(localStorage.getItem("schedule"));
+    $('#9').val(localStorage.getItem("9am"))
+    $('#10').val(localStorage.getItem("10am"))
+    $('#11').val(localStorage.getItem("11am"))
+    $('#12').val(localStorage.getItem("12pm"))
+    $('#13').val(localStorage.getItem("1pm"))
+    $('#14').val(localStorage.getItem("2pm"))
+    $('#15').val(localStorage.getItem("3pm"))
+    $('#16').val(localStorage.getItem("4pm"))
+    $('#17').val(localStorage.getItem("5pm"))
 }
 
 $('.saveBtn').on("click", function() {
-    console.log("saved")
-    
+    var time = $(this).siblings(".hour").attr('id');
+    var value = $(this).siblings(".description").val();
+    localStorage.setItem(time, value);
 })
 
-var saveSchedule = function() {
-    localStorage.setItem("schedule", JSON.stringify(schedule));
-}
+// var saveSchedule = function() {
+//     localStorage.setItem("schedule", JSON.stringify(schedule));
+// }
 
 loadSchedule();
