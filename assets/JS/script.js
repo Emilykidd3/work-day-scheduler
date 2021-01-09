@@ -1,13 +1,18 @@
 var hourDivs= document.getElementsByClassName("hour");
-var DateTime = luxon.DateTime;
-var militaryHour = DateTime.local().toFormat("HH");
-
+// var DateTime = luxon.DateTime;
+var DateTime = moment();
+// var militaryHour = parseInt(DateTime.local().toFormat("HH"));
+var militaryHour = parseInt(DateTime.format('HH'));
 var schedule = {};
 
 var list = JSON.parse(localStorage.getItem('schedule'))
 
-var currentDate = DateTime.local().toFormat("cccc',' LLLL d");
-$("#currentDay").text(currentDate);
+var currentDate = DateTime.format('dddd, MMMM do');
+$('#currentDay').text(currentDate)
+
+console.log(currentDate);
+console.log(militaryHour);
+console.log(typeof(militaryHour));
 
 $(".description").each(function(){
     if (parseInt($(this).attr("id")) < militaryHour) {
@@ -18,7 +23,7 @@ $(".description").each(function(){
         $(this).removeClass("past future")
         $(this).addClass("present")
     }
-    else {
+    else if (parseInt($(this).attr("id")) > militaryHour) {
         $(this).removeClass("present past")
         $(this).addClass("future")
     }
@@ -41,9 +46,5 @@ $('.saveBtn').on("click", function() {
     var value = $(this).siblings(".description").val();
     localStorage.setItem(time, value);
 })
-
-// var saveSchedule = function() {
-//     localStorage.setItem("schedule", JSON.stringify(schedule));
-// }
 
 loadSchedule();
