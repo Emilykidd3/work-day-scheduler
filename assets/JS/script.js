@@ -1,19 +1,21 @@
+// global variables
 var hourDivs= document.getElementsByClassName("hour");
+// if using luxon instead of moment
 // var DateTime = luxon.DateTime;
 var DateTime = moment();
+// if using luxon instead of momement 
 // var militaryHour = parseInt(DateTime.local().toFormat("HH"));
 var militaryHour = parseInt(DateTime.format('HH'));
 var schedule = {};
 
+// grab items from local storage
 var list = JSON.parse(localStorage.getItem('schedule'))
 
+// get current date for top of page
 var currentDate = DateTime.format('dddd, MMMM do');
 $('#currentDay').text(currentDate)
 
-console.log(currentDate);
-console.log(militaryHour);
-console.log(typeof(militaryHour));
-
+// changes backround color for past present and future
 $(".description").each(function(){
     if (parseInt($(this).attr("id")) < militaryHour) {
         $(this).removeClass("future present")
@@ -29,6 +31,7 @@ $(".description").each(function(){
     }
 })
 
+// loads scehdule from local storage
 var loadSchedule = function() {
     $('#9').val(localStorage.getItem("9am"))
     $('#10').val(localStorage.getItem("10am"))
@@ -41,6 +44,7 @@ var loadSchedule = function() {
     $('#17').val(localStorage.getItem("5pm"))
 }
 
+// saves item to local storage
 $('.saveBtn').on("click", function() {
     var time = $(this).siblings(".hour").attr('id');
     var value = $(this).siblings(".description").val();
