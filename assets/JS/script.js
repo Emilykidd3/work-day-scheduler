@@ -12,8 +12,8 @@ var schedule = {};
 var list = JSON.parse(localStorage.getItem('schedule'))
 
 // get current date for top of page
-var currentDate = DateTime.format('dddd, MMMM do');
-$('#currentDay').text(currentDate)
+var currentDate = DateTime.format('dddd[,] MMMM Do');
+$('#currentDay').text(currentDate);
 
 // changes backround color for past present and future
 $(".description").each(function(){

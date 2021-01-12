@@ -21,6 +21,7 @@ textarea{
   border-bottom: 10px solid black;
 }
 
+/* schedule section */
 .description{
   white-space: pre-wrap;
 }
@@ -42,7 +43,7 @@ textarea{
   border-top: 1px dashed #000000;
 }
 
-/* background colors */
+/* background colors of schedule */
 .past {
   background-color: #d3d3d3;
   color: black;
